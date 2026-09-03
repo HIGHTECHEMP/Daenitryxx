@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Track a DAENITRYXX shipment by tracking number." name="description"/>
+<title>Track Shipment — DAENITRYXX</title>
+<link href="css/styles.css" rel="stylesheet"/>
+<meta content="#031117" name="theme-color"/></head>
+<body class="site-page" data-ui="daenitryxx"><div aria-hidden="true" class="ui-ambient"><span class="ambient-orb ambient-orb-a"></span><span class="ambient-orb ambient-orb-b"></span><span class="ambient-grid"></span></div>
+<div id="site-header"></div>
+<main class="public-main">
+<section class="tracking-shell ui-section">
+<div class="container">
+<div class="tracking-head">
+<div><span class="eyebrow">SHIPMENT TRACKING</span>
+<h1>Know where it is.</h1>
+<p>Enter your DAENITRYXX tracking number to view the current status and shipment timeline.</p>
+</div>
+<form class="tracking-search" id="tracking-form"><label class="sr-only" for="tracking-number">Tracking number</label><input id="tracking-number" maxlength="40" name="tracking_number" placeholder="e.g. DX-8F2A4C91D0" required=""/><button class="btn btn-primary">Track</button></form>
+</div>
+<div aria-live="polite" class="tracking-result" id="tracking-result"></div>
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="js/main.js" type="module"></script>
+</body>
+</html>

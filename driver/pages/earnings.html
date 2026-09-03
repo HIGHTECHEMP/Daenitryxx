@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Earnings | DAENITRYXX</title>
+<link href="../../css/styles.css" rel="stylesheet"/>
+<meta content="#031117" name="theme-color"/></head>
+<body class="dashboard-page" data-ui="daenitryxx"><div aria-hidden="true" class="ui-ambient"><span class="ambient-orb ambient-orb-a"></span><span class="ambient-orb ambient-orb-b"></span><span class="ambient-grid"></span></div>
+<div class="dashboard-layout ui-dashboard-shell">
+<aside class="sidebar ui-dashboard-sidebar" id="sidebar"><span aria-hidden="true" class="sidebar-glow"></span>
+<div class="sidebar-brand">
+<a class="brand" href="../../index.html">
+          DAENITRYXX
+        </a>
+</div>
+<nav class="sidebar-nav">
+<a class="sidebar-link" href="../index.html">
+<span>⌂</span>
+<span>Overview</span>
+</a>
+<a class="sidebar-link" href="./assignments.html">
+<span>▣</span>
+<span>Assignments</span>
+</a>
+<a class="sidebar-link active" href="./earnings.html">
+<span>₦</span>
+<span>Earnings</span>
+</a>
+<!-- <a class="sidebar-link" href="./notifications.html">
+<span>♢</span>
+<span>Notifications</span>
+</a> -->
+<a class="sidebar-link" href="./profile.html">
+<span>◯</span>
+<span>Profile</span>
+</a>
+<button class="sidebar-link sidebar-button" id="sign-out" type="button">
+<span>↪</span>
+<span>Sign out</span>
+</button>
+</nav>
+</aside>
+<div class="dashboard-main ui-dashboard-main">
+<header class="dashboard-topbar ui-dashboard-topbar">
+<button aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation menu" class="menu-toggle" id="sidebar-toggle" type="button">
+          ☰
+        </button>
+<div class="dashboard-title">
+<span class="eyebrow">DRIVER PORTAL</span>
+<h1>Earnings</h1>
+</div>
+<div class="dashboard-actions">
+<div class="notification-wrap">
+
+<div class="notification-panel" hidden id="notification-panel" aria-hidden="true">
+<div class="notification-panel-head">
+<strong>Notifications</strong>
+<button class="text-button" id="mark-all-notifications" type="button">
+                  Mark all read
+                </button>
+</div>
+<div class="notification-list" id="notification-list">
+<div class="notification-empty">
+                  Loading notifications...
+                </div>
+</div>
+</div>
+</div>
+<div class="dashboard-user">
+<span id="user-name">Driver</span>
+</div>
+</div>
+</header>
+<main class="dashboard-content ui-dashboard-content"><div aria-hidden="true" class="content-glow"></div>
+<section class="page-intro">
+<div>
+<span class="eyebrow">FINANCIALS</span>
+<h2>My earnings</h2>
+<p class="muted">
+              Track your delivery earnings and request available payouts.
+            </p>
+</div>
+</section>
+<!-- BALANCE -->
+<section class="stats-grid">
+<article class="stat-card">
+<span class="stat-label">
+              Available balance
+            </span>
+<strong id="payout-available">
+              ₦0.00
+            </strong>
+<small>
+              Available for payout
+            </small>
+</article>
+<article class="stat-card">
+<span class="stat-label">
+              Total earned
+            </span>
+<strong id="total-earned">
+              ₦0.00
+            </strong>
+<small>
+              Approved and paid earnings
+            </small>
+</article>
+<article class="stat-card">
+<span class="stat-label">
+              Pending payouts
+            </span>
+<strong id="pending-payouts">
+              ₦0.00
+            </strong>
+<small>
+              Reserved for payout
+            </small>
+</article>
+</section>
+<!-- PAYOUT -->
+<section class="dashboard-section">
+<div class="section-heading">
+<div>
+<span class="eyebrow">WITHDRAW</span>
+<h2>Request payout</h2>
+</div>
+</div>
+<form class="dash-form" id="payout-form">
+<div class="full">
+<div class="notice">
+
+                Your payout request will include your bank details.
+                Make sure the information is correct before submitting.
+
+              </div>
+</div>
+<label>
+              Amount (NGN)
+
+              <input id="payout-amount" min="1" name="amount" required="" step="0.01" type="number"/>
+</label>
+<label>
+              Bank name
+
+              <input id="payout-bank-name" maxlength="120" name="bank_name" required="" type="text"/>
+</label>
+<label>
+              Account name
+
+              <input id="payout-account-name" maxlength="120" name="account_name" required="" type="text"/>
+</label>
+<label>
+              Account number
+
+              <input id="payout-account-number" inputmode="numeric" maxlength="20" name="account_number" required="" type="text"/>
+</label>
+<label>
+              Note
+
+              <input maxlength="500" name="notes" placeholder="Optional note" type="text"/>
+</label>
+<div class="full">
+<button class="btn btn-primary" type="submit">
+                Request payout
+              </button>
+<div class="form-message"></div>
+</div>
+</form>
+</section>
+<!-- HISTORY -->
+<section class="dashboard-section">
+<div class="section-heading">
+<div>
+<span class="eyebrow">HISTORY</span>
+<h2>Earnings &amp; payout history</h2>
+</div>
+<button class="btn btn-secondary" id="refresh-earnings" type="button">
+              Refresh
+            </button>
+</div>
+<div class="table-wrapper">
+<table class="data-table">
+<thead>
+<tr>
+<th>Type</th>
+<th>Reference</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Date</th>
+<th>Receipt</th>
+</tr>
+</thead>
+<tbody id="earnings-body">
+<tr>
+<td colspan="6">
+                    Loading earnings...
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+</div>
+<script src="../../js/driver-earnings.js" type="module"></script>
+</body>
+</html>

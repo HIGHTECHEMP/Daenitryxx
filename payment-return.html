@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Payment Verification — DAENITRYXX</title>
+<link href="css/styles.css" rel="stylesheet"/>
+<meta content="#031117" name="theme-color"/></head>
+<body class="auth-page" data-ui="daenitryxx"><div aria-hidden="true" class="ui-ambient"><span class="ambient-orb ambient-orb-a"></span><span class="ambient-orb ambient-orb-b"></span><span class="ambient-grid"></span></div>
+<main class="auth-layout auth-shell">
+<a class="brand auth-brand" href="index.html"><span>DX</span> DAENITRYXX</a>
+<section class="auth-card auth-card-shell">
+<div class="auth-form-shell"><div class="auth-form" style="grid-column:1/-1;max-width:620px;margin:auto">
+<span class="eyebrow">PAYMENT</span>
+<h1 id="payment-title">Verifying payment…</h1>
+<p class="muted" id="payment-message">Please wait while DAENITRYXX verifies your payment with the provider.</p>
+<p class="notice" hidden="" id="tracking-result"></p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+<a class="btn btn-primary" href="customer/index.html">Return to dashboard</a>
+<a class="btn btn-ghost" hidden="" href="tracking.html" id="track-link">Track shipment</a>
+</div>
+</div></div>
+</section>
+</main>
+<script type="module">
+    import { supabase } from './js/supabase-client.js';
+
+    const title = document.querySelector('#payment-title');
+    const message = document.querySelector('#payment-message');
+    const trackingResult = document.querySelector('#tracking-result');
+    const trackLink = document.querySelector('#track-link');
+
+    const q = new URLSearchParams(location.search);
+
+    const provider = q.get('provider');
+
+    const reference =
+        q.get('reference') ||
+        q.get('tx_ref');
+
+    const transaction_id =
+        q.get('transaction_id');
+
+
+    async function getFunctionError(error) {
+
+        /*
+         * Supabase Edge Functions can put the actual
+         * response body inside error.context.
+         */
+
+        try {
+
+            if (
+                error?.context &&
+                typeof error.context.json === 'function'
+            ) {
+
+                const body =
+                    await error.context.json();
+
+                if (body?.error) {
+                    return body.error;
+                }
+
+                if (body?.message) {
+                    return body.message;
+                }
+            }
+
+        } catch (_) {
+            // Ignore parsing errors.
+        }
+
+
+        return (
+            error?.message ||
+            'The payment verification service returned an error.'
+        );
+    }
+
+
+    async function verifyPayment() {
+
+        if (!provider || !reference) {
+
+            title.textContent =
+                'Payment information missing';
+
+            message.textContent =
+                'We could not identify this payment return.';
+
+            return;
+        }
+
+
+        title.textContent =
+            'Verifying payment…';
+
+        message.textContent =
+            'Please wait while DAENITRYXX verifies your payment with the provider.';
+
+
+        try {
+
+            const {
+                data,
+                error
+            } = await supabase.functions.invoke(
+                'verify-payment',
+                {
+                    body: {
+                        provider,
+                        reference,
+                        transaction_id
+                    }
+                }
+            );
+
+
+            /*
+             * --------------------------------------------------
+             * EDGE FUNCTION ERROR
+             * --------------------------------------------------
+             */
+
+            if (error) {
+
+                console.error(
+                    'VERIFY PAYMENT ERROR:',
+                    error
+                );
+
+
+                const errorMessage =
+                    await getFunctionError(error);
+
+
+                title.textContent =
+                    'Payment verification failed';
+
+                message.textContent =
+                    errorMessage;
+
+                return;
+            }
+
+
+            /*
+             * --------------------------------------------------
+             * APPLICATION ERROR
+             * --------------------------------------------------
+             */
+
+            if (data?.error) {
+
+                title.textContent =
+                    'Payment could not be verified';
+
+                message.textContent =
+                    data.error;
+
+                return;
+            }
+
+
+            /*
+             * --------------------------------------------------
+             * VERIFIED + SHIPMENT CREATED
+             * --------------------------------------------------
+             */
+
+            if (
+                data?.verified &&
+                data?.tracking_number
+            ) {
+
+                title.textContent =
+                    'Payment verified';
+
+                message.textContent =
+                    'Your payment was verified and your shipment has been created.';
+
+
+                trackingResult.hidden =
+                    false;
+
+                trackingResult.textContent =
+                    `Tracking number: ${data.tracking_number}`;
+
+
+                trackLink.hidden =
+                    false;
+
+                trackLink.href =
+                    `tracking.html?tracking=${
+                        encodeURIComponent(
+                            data.tracking_number
+                        )
+                    }`;
+
+
+                return;
+            }
+
+
+            /*
+             * --------------------------------------------------
+             * VERIFIED BUT NO SHIPMENT NUMBER
+             * --------------------------------------------------
+             */
+
+            if (data?.verified) {
+
+                title.textContent =
+                    'Payment verified';
+
+                message.textContent =
+                    'Your payment was verified successfully. Return to your dashboard to view the shipment.';
+
+                return;
+            }
+
+
+            /*
+             * --------------------------------------------------
+             * PAYMENT NOT VERIFIED
+             * --------------------------------------------------
+             */
+
+            title.textContent =
+                'Payment not completed';
+
+            message.textContent =
+                data?.message ||
+                'The provider did not report a successful payment. No shipment was created.';
+
+
+        } catch (error) {
+
+            console.error(
+                'PAYMENT VERIFICATION ERROR:',
+                error
+            );
+
+
+            title.textContent =
+                'Verification unavailable';
+
+            message.textContent =
+                error?.message ||
+                'We could not complete verification right now. Please return to your dashboard and check your payment records.';
+
+        }
+
+    }
+
+
+    verifyPayment();
+
+</script>
+</body>
+</html>
