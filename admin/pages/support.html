@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8"/>
+
+<meta
+  content="width=device-width,initial-scale=1"
+  name="viewport"
+/>
+
+<title>
+  Support — Admin | DAENITRYXX
+</title>
+
+<link
+  href="../../css/styles.css"
+  rel="stylesheet"
+/>
+
+<meta
+  content="#031117"
+  name="theme-color"
+/>
+
+</head>
+
+
+<body
+  class="dashboard-body dashboard-page"
+  data-ui="daenitryxx"
+>
+
+
+<div
+  aria-hidden="true"
+  class="ui-ambient"
+>
+
+<span class="ambient-orb ambient-orb-a"></span>
+
+<span class="ambient-orb ambient-orb-b"></span>
+
+<span class="ambient-grid"></span>
+
+</div>
+
+
+
+<div class="dash-shell ui-dashboard-shell">
+
+
+<aside class="sidebar ui-dashboard-sidebar">
+
+<span
+  aria-hidden="true"
+  class="sidebar-glow"
+></span>
+
+
+<a
+  class="brand"
+  href="../index.html"
+>
+
+<span>DX</span>
+
+DAENITRYXX
+
+</a>
+
+
+<nav class="side-nav">
+
+
+<a href="../index.html">
+Overview
+</a>
+
+
+<a href="shipments.html">
+Shipments
+</a>
+
+
+<a href="applications.html">
+Driver applications
+</a>
+
+
+<a href="drivers.html">
+Drivers
+</a>
+
+
+<a href="customers.html">
+Customers
+</a>
+
+
+<a href="payments.html">
+Payments
+</a>
+
+
+<a href="payouts.html">
+Payouts
+</a>
+
+
+<a href="pricing.html">
+Delivery pricing
+</a>
+
+
+<a
+  class="active"
+  href="support.html"
+>
+Support
+</a>
+
+
+<a href="audit.html">
+Audit
+</a>
+
+
+<a href="notifications.html">
+Notifications
+</a>
+
+
+<a href="profile.html">
+Profile
+</a>
+
+
+<a href="../../contact.html">
+Public contact
+</a>
+
+
+<button
+  id="signout"
+  type="button"
+>
+Sign out
+</button>
+
+
+</nav>
+
+</aside>
+
+
+
+<section class="dash-main ui-dashboard-main">
+
+
+<header class="dash-top ui-dashboard-topbar">
+
+
+<button
+  aria-expanded="false"
+  aria-label="Open dashboard menu"
+  class="side-toggle"
+  id="sidebar-toggle"
+  type="button"
+>
+☰
+</button>
+
+
+<span class="eyebrow">
+ADMIN CONSOLE
+</span>
+
+
+<b id="user-name">
+Loading…
+</b>
+
+
+</header>
+
+
+
+<main class="dash-content ui-dashboard-content">
+
+
+<div
+  aria-hidden="true"
+  class="content-glow"
+></div>
+
+
+
+<div class="dash-title">
+
+
+<div>
+
+<span class="eyebrow">
+CUSTOMER CARE
+</span>
+
+
+<h1>
+Support requests.
+</h1>
+
+
+<p class="muted">
+Review customer messages and send replies directly from the admin panel.
+</p>
+
+</div>
+
+
+<button
+  class="btn btn-ghost"
+  id="refresh-support"
+  type="button"
+>
+Refresh
+</button>
+
+
+</div>
+
+
+
+<section class="dash-panel">
+
+
+<div class="table-wrap">
+
+
+<table
+  class="data-table admin-data-table admin-support-table"
+>
+
+
+<thead>
+
+<tr>
+
+<th>
+Subject
+</th>
+
+<th>
+Customer
+</th>
+
+<th>
+Status
+</th>
+
+<th>
+Created
+</th>
+
+<th>
+Action
+</th>
+
+</tr>
+
+</thead>
+
+
+
+<tbody id="support-body">
+
+<tr>
+
+<td colspan="5">
+Loading…
+</td>
+
+</tr>
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</section>
+
+
+
+<section
+  class="dash-panel support-reply-panel"
+  id="support-detail-panel"
+  hidden
+>
+
+
+<div class="panel-head">
+
+
+<div>
+
+<span class="eyebrow">
+SUPPORT CONVERSATION
+</span>
+
+
+<h2 id="support-detail-subject">
+Support request
+</h2>
+
+
+<p
+  class="muted"
+  id="support-detail-customer"
+>
+</p>
+
+
+</div>
+
+
+<button
+  class="btn btn-ghost"
+  id="close-support-detail"
+  type="button"
+>
+Close
+</button>
+
+
+</div>
+
+<div
+  class="support-message-meta"
+  id="support-detail-created"
+></div>
+
+
+<div
+  class="support-conversation"
+  id="support-conversation-history"
+>
+
+
+<div class="empty">
+
+Loading conversation…
+
+</div>
+
+
+</div>
+
+
+
+<form id="support-reply-form">
+
+
+<label>
+
+
+Reply to customer
+
+
+<textarea
+  id="support-reply"
+  maxlength="5000"
+  placeholder="Write your reply to the customer..."
+  required
+></textarea>
+
+
+</label>
+
+
+
+<div class="support-reply-actions">
+
+
+<label>
+
+
+Request status
+
+
+<select id="support-status-select">
+
+
+<option value="open">
+Open
+</option>
+
+
+<option value="in_progress">
+In progress
+</option>
+
+
+<option value="resolved">
+Resolved
+</option>
+
+
+<option value="closed">
+Closed
+</option>
+
+
+</select>
+
+
+</label>
+
+
+
+<div>
+
+
+<button
+  class="btn btn-primary"
+  id="send-support-reply"
+  type="submit"
+>
+Send reply
+</button>
+
+
+</div>
+
+
+</div>
+
+
+<div class="form-message"></div>
+
+
+</form>
+
+
+</section>
+
+
+</main>
+
+
+</section>
+
+
+</div>
+
+
+
+<div
+  aria-hidden="true"
+  class="notification-panel"
+  hidden
+  id="notification-panel"
+  role="dialog"
+  aria-label="Notifications"
+>
+
+
+<div class="notification-panel-head">
+
+
+<div>
+
+<span class="eyebrow">
+Updates
+</span>
+
+<strong>
+Notifications
+</strong>
+
+</div>
+
+
+<button
+  class="link-button"
+  id="mark-all-notifications"
+  type="button"
+>
+Mark all read
+</button>
+
+
+</div>
+
+
+
+<div
+  class="notification-list"
+  id="notification-list"
+>
+
+<div class="notification-empty">
+Loading notifications…
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<script type="module">
+
+
+import {
+
+  initAdminDashboard
+
+} from "../../js/admin-shared.js";
+
+
+import {
+
+  initSupportPage
+
+} from "../../js/admin-support.js";
+
+
+const result =
+  await initAdminDashboard();
+
+
+if (result?.ctx) {
+
+  initSupportPage();
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

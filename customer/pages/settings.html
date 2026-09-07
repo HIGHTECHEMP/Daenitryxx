@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8"/>
+
+<meta
+  content="width=device-width,initial-scale=1"
+  name="viewport"
+/>
+
+<title>
+Settings — DAENITRYXX
+</title>
+
+<link
+  href="../../css/styles.css"
+  rel="stylesheet"
+/>
+
+<meta
+  content="#031117"
+  name="theme-color"
+/>
+
+</head>
+
+
+<body
+  class="dashboard-body dashboard-page"
+  data-ui="daenitryxx"
+>
+
+
+<div
+  aria-hidden="true"
+  class="ui-ambient"
+>
+
+<span class="ambient-orb ambient-orb-a"></span>
+
+<span class="ambient-orb ambient-orb-b"></span>
+
+<span class="ambient-grid"></span>
+
+</div>
+
+
+
+<div class="dash-shell ui-dashboard-shell">
+
+
+<aside class="sidebar ui-dashboard-sidebar">
+
+
+<span
+  aria-hidden="true"
+  class="sidebar-glow"
+></span>
+
+
+<a
+  class="brand"
+  href="../index.html"
+>
+
+<span>DX</span>
+
+DAENITRYXX
+
+</a>
+
+
+
+<nav
+  aria-label="Customer navigation"
+  class="side-nav"
+>
+
+
+<a href="../index.html">
+Overview
+</a>
+
+
+<a href="shipments.html">
+My shipments
+</a>
+
+
+<a href="../../book-delivery.html">
+Book a delivery
+</a>
+
+
+<a href="../../tracking.html">
+Track shipment
+</a>
+
+
+<a href="payments.html">
+Payments
+</a>
+
+
+<a href="profile.html">
+Profile
+</a>
+
+
+<a href="support.html">
+Support
+</a>
+
+
+<a
+  class="active"
+  href="settings.html"
+>
+Settings
+</a>
+
+
+<button
+  id="signout"
+  type="button"
+>
+Sign out
+</button>
+
+
+</nav>
+
+
+</aside>
+
+
+
+<section class="dash-main ui-dashboard-main">
+
+
+<header class="dash-top ui-dashboard-topbar">
+
+
+<button
+  aria-expanded="false"
+  aria-label="Open customer menu"
+  class="side-toggle"
+  id="side-toggle"
+  type="button"
+>
+☰
+</button>
+
+
+<span class="eyebrow">
+CUSTOMER PORTAL
+</span>
+
+
+
+<div class="dash-top-right">
+
+
+<div
+  class="notification-wrap"
+  id="notification-wrap"
+>
+
+
+<button
+  aria-controls="notification-panel"
+  aria-expanded="false"
+  aria-label="Open notifications"
+  class="notification-button"
+  id="notification-button"
+  type="button"
+>
+
+
+<span
+  aria-hidden="true"
+  class="notification-icon"
+>
+♧
+</span>
+
+
+<span
+  class="notification-badge"
+  hidden
+  id="notification-badge"
+>
+0
+</span>
+
+
+</button>
+
+
+
+<div
+  aria-hidden="true"
+  class="notification-panel"
+  hidden
+  id="notification-panel"
+>
+
+
+<div class="notification-panel-head">
+
+
+<div>
+
+
+<span class="eyebrow">
+UPDATES
+</span>
+
+
+<h2>
+Notifications
+</h2>
+
+
+</div>
+
+
+<button
+  class="link-button"
+  id="mark-all-read"
+  type="button"
+>
+Mark all read
+</button>
+
+
+</div>
+
+
+<div
+  class="notification-list"
+  id="notifications-list"
+></div>
+
+
+</div>
+
+
+</div>
+
+
+
+<b id="user-name">
+Loading…
+</b>
+
+
+</div>
+
+
+</header>
+
+
+
+<main class="dash-content ui-dashboard-content">
+
+
+<div
+  aria-hidden="true"
+  class="content-glow"
+></div>
+
+
+
+<div class="dash-title">
+
+
+<div>
+
+
+<span class="eyebrow">
+SETTINGS
+</span>
+
+
+<h1>
+Account settings.
+</h1>
+
+
+<p class="muted">
+
+Manage your account information and security.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="settings-grid">
+
+
+<section class="dash-panel">
+
+
+<div class="panel-head">
+
+
+<div>
+
+
+<span class="eyebrow">
+ACCOUNT
+</span>
+
+
+<h2>
+Account information
+</h2>
+
+
+<p class="muted">
+
+Your current DAENITRYXX account details.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="settings-account-info">
+
+
+<div class="settings-info-row">
+
+
+<span>
+Full name
+</span>
+
+
+<strong id="settings-full-name">
+
+Loading…
+
+</strong>
+
+
+</div>
+
+
+
+<div class="settings-info-row">
+
+
+<span>
+Email address
+</span>
+
+
+<strong id="settings-email">
+
+Loading…
+
+</strong>
+
+
+</div>
+
+
+</div>
+
+
+
+<a
+  class="btn btn-ghost"
+  href="profile.html"
+>
+Edit profile
+</a>
+
+
+</section>
+
+
+
+<section class="dash-panel">
+
+
+<div class="panel-head">
+
+
+<div>
+
+
+<span class="eyebrow">
+SECURITY
+</span>
+
+
+<h2>
+Change password
+</h2>
+
+
+<p class="muted">
+
+Choose a secure password for your DAENITRYXX account.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<form
+  class="dash-form"
+  id="change-password-form"
+>
+
+
+<label>
+
+
+New password
+
+
+<input
+  autocomplete="new-password"
+  id="new-password"
+  minlength="6"
+  placeholder="Enter a new password"
+  required
+  type="password"
+/>
+
+
+</label>
+
+
+
+<label>
+
+
+Confirm new password
+
+
+<input
+  autocomplete="new-password"
+  id="confirm-password"
+  minlength="6"
+  placeholder="Confirm your new password"
+  required
+  type="password"
+/>
+
+
+</label>
+
+
+
+<div class="full">
+
+
+<button
+  class="btn btn-primary"
+  id="change-password-button"
+  type="submit"
+>
+Update password
+</button>
+
+
+<div class="form-message"></div>
+
+
+</div>
+
+
+</form>
+
+
+</section>
+
+
+
+<section class="dash-panel settings-help-panel">
+
+
+<div class="panel-head">
+
+
+<div>
+
+
+<span class="eyebrow">
+HELP
+</span>
+
+
+<h2>
+Need assistance?
+</h2>
+
+
+<p class="muted">
+
+Contact DAENITRYXX Support if you need help with your account or deliveries.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<a
+  class="btn btn-ghost"
+  href="support.html"
+>
+Contact support
+</a>
+
+
+</section>
+
+
+</div>
+
+
+</main>
+
+
+</section>
+
+
+</div>
+
+
+
+<script
+  src="../../js/customer-settings.js"
+  type="module"
+></script>
+
+
+</body>
+
+</html>
