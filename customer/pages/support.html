@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+
+    <title>
+        Support — DAENITRYXX
+    </title>
+
+    <link href="../../css/styles.css" rel="stylesheet" />
+
+    <meta content="#031117" name="theme-color" />
+
+</head>
+
+
+<body class="dashboard-body dashboard-page" data-ui="daenitryxx">
+
+
+    <div aria-hidden="true" class="ui-ambient">
+
+        <span class="ambient-orb ambient-orb-a"></span>
+
+        <span class="ambient-orb ambient-orb-b"></span>
+
+        <span class="ambient-grid"></span>
+
+    </div>
+
+
+
+    <div class="dash-shell ui-dashboard-shell">
+
+
+        <aside class="sidebar ui-dashboard-sidebar" id="dashboard-sidebar">
+
+
+            <span aria-hidden="true" class="sidebar-glow"></span>
+
+
+            <a class="brand" href="../index.html">
+
+                <span>DX</span>
+
+                DAENITRYXX
+
+            </a>
+
+
+
+            <nav aria-label="Customer navigation" class="side-nav">
+
+
+                <a href="../index.html">
+                    Overview
+                </a>
+
+
+                <a href="shipments.html">
+                    My shipments
+                </a>
+
+
+                <a href="../../book-delivery.html">
+                    Book a delivery
+                </a>
+
+
+                <a href="../../tracking.html">
+                    Track shipment
+                </a>
+
+
+                <a href="payments.html">
+                    Payments
+                </a>
+
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+
+                <a class="active" href="support.html">
+                    Support
+                </a>
+
+
+                <a href="settings.html">
+                    Settings
+                </a>
+
+
+                <button id="signout" type="button">
+                    Sign out
+                </button>
+
+
+            </nav>
+
+
+        </aside>
+
+
+
+        <section class="dash-main ui-dashboard-main">
+
+
+            <header class="dash-top ui-dashboard-topbar">
+
+
+                <button aria-controls="dashboard-sidebar" aria-expanded="false" aria-label="Open customer menu"
+                    class="side-toggle" id="side-toggle" type="button">
+                    ☰
+                </button>
+
+
+                <span class="eyebrow">
+                    CUSTOMER PORTAL
+                </span>
+
+
+
+                <div class="dash-top-right">
+
+
+                    <div class="notification-wrap" id="notification-wrap">
+
+
+                        <button aria-controls="notification-panel" aria-expanded="false" aria-label="Open notifications"
+                            class="notification-button" id="notification-button" type="button">
+
+
+                            <span aria-hidden="true" class="notification-icon">
+                                ♧
+                            </span>
+
+
+                            <span class="notification-badge" hidden id="notification-badge">
+                                0
+                            </span>
+
+
+                        </button>
+
+
+
+                        <div aria-hidden="true" aria-label="Notifications" class="notification-panel" hidden
+                            id="notification-panel" role="dialog">
+
+
+                            <div class="notification-panel-head">
+
+
+                                <strong>
+                                    Notifications
+                                </strong>
+
+
+                                <button class="text-button" id="mark-all-read" type="button">
+                                    Mark all read
+                                </button>
+
+
+                            </div>
+
+
+
+                            <div class="notification-list" id="notifications-list">
+
+                                <div class="notification-empty">
+
+                                    Loading notifications…
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <b id="user-name">
+
+                        Loading…
+
+                    </b>
+
+
+                </div>
+
+
+            </header>
+
+
+
+            <main class="dash-content ui-dashboard-content support-page-content">
+
+                <div aria-hidden="true" class="content-glow"></div>
+
+                <div class="dash-title support-page-title">
+                    <div>
+                        <span class="eyebrow">CUSTOMER SUPPORT</span>
+                        <h1>Support conversations.</h1>
+                        <p class="muted">
+                            Start a request, open any conversation, and continue the discussion until it is closed.
+                        </p>
+                    </div>
+
+                    <button class="btn btn-primary" id="new-support-request" type="button">
+                        + New request
+                    </button>
+                </div>
+
+                <section class="support-workspace customer-support-workspace">
+
+                    <aside class="support-chat-sidebar" aria-label="Support conversations">
+
+                        <div class="support-chat-sidebar-head">
+                            <div>
+                                <span class="eyebrow">CHATS</span>
+                                <h2>Your conversations</h2>
+                            </div>
+
+                            <button
+                                aria-label="Start a new support request"
+                                class="support-new-chat-icon"
+                                id="new-support-request-icon"
+                                type="button"
+                            >
+                                +
+                            </button>
+                        </div>
+
+                        <label class="support-search">
+                            <span class="sr-only">Search support conversations</span>
+                            <input
+                                id="support-search"
+                                placeholder="Search conversations..."
+                                type="search"
+                            />
+                        </label>
+
+                        <div class="support-chat-tabs" role="tablist" aria-label="Conversation filters">
+                            <button class="active" data-support-filter="open" type="button">Open</button>
+                            <button data-support-filter="closed" type="button">Closed</button>
+                            <button data-support-filter="all" type="button">All</button>
+                        </div>
+
+                        <div class="support-chat-list" id="customer-support-list">
+                            <div class="empty">Loading support conversations…</div>
+                        </div>
+                    </aside>
+
+
+                    <section class="support-conversation-panel" id="support-conversation-panel">
+
+                        <div class="support-empty-state" id="support-empty-state">
+                            <div class="support-empty-icon">✦</div>
+                            <h2>Select a conversation</h2>
+                            <p class="muted">
+                                Choose a chat from the list to read and continue the conversation.
+                            </p>
+                            <button class="btn btn-primary" id="empty-state-new-request" type="button">
+                                Start a support request
+                            </button>
+                        </div>
+
+
+                        <div class="support-conversation-view" hidden id="support-conversation-view">
+
+                            <header class="support-conversation-head">
+                                <div class="support-conversation-head-main">
+                                    <button
+                                        aria-label="Back to conversations"
+                                        class="support-mobile-back"
+                                        id="support-mobile-back"
+                                        type="button"
+                                    >
+                                        ←
+                                    </button>
+
+                                    <div>
+                                        <div class="support-conversation-title-row">
+                                            <h2 id="conversation-subject">Support conversation</h2>
+                                            <span class="support-status-badge" id="conversation-status">
+                                                Open
+                                            </span>
+                                        </div>
+                                        <p class="muted" id="conversation-meta"></p>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-ghost support-refresh-conversation" id="refresh-support" type="button">
+                                    Refresh
+                                </button>
+                            </header>
+
+
+                            <div
+                                aria-live="polite"
+                                class="support-message-stream"
+                                id="support-conversation-history"
+                            >
+                                <div class="empty">Loading conversation…</div>
+                            </div>
+
+
+                            <div class="support-closed-notice" hidden id="support-closed-notice">
+                                <strong>This conversation is closed.</strong>
+                                <span>Support has closed this request, so no more replies can be sent.</span>
+                            </div>
+
+
+                            <form class="support-composer" id="customer-support-reply-form">
+                                <textarea
+                                    id="customer-support-reply"
+                                    maxlength="5000"
+                                    placeholder="Write your reply..."
+                                    required
+                                ></textarea>
+
+                                <div class="support-composer-actions">
+                                    <small>Press Ctrl + Enter to send</small>
+
+                                    <button class="btn btn-primary" id="customer-send-support-reply" type="submit">
+                                        Send reply
+                                    </button>
+                                </div>
+
+                                <div class="form-message"></div>
+                            </form>
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+
+                <section class="dash-panel support-new-request-panel" hidden id="new-support-request-panel">
+
+                    <div class="panel-head">
+                        <div>
+                            <span class="eyebrow">NEW REQUEST</span>
+                            <h2>Start a conversation</h2>
+                            <p class="muted">
+                                Tell the DAENITRYXX support team what you need help with.
+                            </p>
+                        </div>
+
+                        <button class="btn btn-ghost" id="cancel-new-support-request" type="button">
+                            Cancel
+                        </button>
+                    </div>
+
+
+                    <form class="dash-form" id="customer-support-form">
+
+                        <label>
+                            Subject
+                            <input
+                                id="support-subject"
+                                maxlength="200"
+                                placeholder="What do you need help with?"
+                                required
+                                type="text"
+                            />
+                        </label>
+
+                        <label>
+                            Message
+                            <textarea
+                                id="support-message"
+                                maxlength="5000"
+                                placeholder="Describe your issue..."
+                                required
+                            ></textarea>
+                        </label>
+
+                        <div class="full">
+                            <button class="btn btn-primary" id="send-support-message" type="submit">
+                                Start conversation
+                            </button>
+                            <div class="form-message"></div>
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </main>
+
+
+        </section>
+
+
+    </div>
+
+
+
+    <script src="../../js/customer-support.js" type="module"></script>
+
+
+</body>
+
+</html>
